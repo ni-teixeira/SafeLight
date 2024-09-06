@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Financeira e Simulador de Lux</title>
+</head>
+<body>
+
+    <h1>Calculadora de Consumo de Energia</h1>
+    <!-- Redução Estimada: A porcentagem de redução no consumo de energia após a implementação do sistema. -->
+
+    Informe a quantidade de luzes por setor ou sala:<br>
+    <input id="iptqtd" type="number"><br>
+
+    Informe a potência W (Watts) das luzes utilizadas:<br>
+    <input id="iptw" type="number"><br>
+
+    Informe o tempo de utilização das luzes (em horas diárias):<br>
+    <input id="ipthrs" type="number" min="0" max="24"><br>
+
+    Informe sua região (São Paulo, Campinas e Rio de Janeiro):<br> 
+    <input id="iptregiao" type="text"><br><br>
+
+    <button onclick="calcular()">Calcular</button>
+    <br><br>
+    <div id="divmsg"></div>
+
+    <h1>Calculadora de produtividade dos funcionários:</h1>
+    <!-- Produtividade esperada: Por volta de 30% após a implementação do sistema.-->
+
+    Quantidade de funcionários: <br>
+    <input id="ipt_qnt_funcionario" type="number"> <br>
+
+    Salário médio dos funcionários: <br>
+    <input id="ipt_salario" type="number"> <br>
+
+    Horas Trabalhadas por dia: <br>
+    <input id="ipt_horas_por_dia" type="number"> <br><br>
+
+    <button onclick="calcularProdutividade()">Calcular</button>
+    <br><br>
+    <div id="divmsg2"></div>
+   
+</div>
+
+
+    <script>
+        function calcular(){
+            // Captura dos valores de entrada
+            var watts = Number(iptw.value);
+            var horas = Number(ipthrs.value);
+            var luzes = Number(iptqtd.value);
+            var regiao = iptregiao.value;
+            var preco = 0;
+
+            if (regiao == "São Paulo") {
+                preco = 0.63
+            }
+            if (regiao == "Campinas") {
+                preco = 0.48
+            }
+            if (regiao == "Rio de Janeiro") {
+                preco = 0.93
+            }
+
+            // Cálculo de consumo total de energia
+            var consumokwh = (watts / 1000) * luzes * (horas * 30);
+            var consumokwhano = (watts / 1000) * luzes * (horas * 365);
+
+            // Custo total
+            var gastototal = consumokwh * preco;
+
+            // Impacto ambiental e economia estimada
+            var impacto = consumokwh * 85;
+            var areasverdes = impacto / 22;
+            var economiaesperada = consumokwh * 0.40; // Economia de 40%
+            var economiafinanceira = economiaesperada * preco;
+
+            // Exibição dos resultados
+            divmsg.innerHTML = `O consumo total de energia em 30 dias é de ${consumokwh} kWh.<br>
+            O consumo anual é de ${consumokwhano} kWh.<br>
+            Isso representa um gasto de R$${gastototal} mensais e R$${(gastototal * 12)} anuais.<br><br>
+            A economia financeira esperada com uma redução de 40% é de R$${economiafinanceira} por mês.<br>
+            A economia anual estimada é de R$${(economiafinanceira * 12)}.<br><br>
+            O impacto ambiental é de ${impacto} Kg de CO₂ por ano, e seria necessária uma área de floresta de ${areasverdes} m² para absorvê-lo.`;
+        }
+
+        function calcularProdutividade() {
+        
+            var qntFuncionario = Number(ipt_qnt_funcionario.value);
+            var salario = Number(ipt_salario.value);
+            var horasPorDia = Number(ipt_horas_por_dia.value);
+
+            // Cálculo do valor atual por hora
+            var valorPorHora = (salario / 30) / horasPorDia;
+
+            // Cálculo do valor por hora após aumento de produtividade
+
+            var aumentoMinimo = valorPorHora * 1.15; // Aumento de 15%
+            var aumentoMaximo = valorPorHora * 1.30; // Aumento de 30%
+
+           divmsg2.innerHTML =  `Atualmente sua empresa tem a produtividade de R$${valorPorHora * qntFuncionario} por hora. Após a implementação, esperamos em média um aumento de produtividade de 15-30%, ou seja, entre R$${aumentoMinimo * qntFuncionario} até R$${aumentoMaximo * qntFuncionario} por hora.`;
+        }
+
+    </script>
+</body>
+</html>
