@@ -63,3 +63,49 @@ INSERT INTO intensidadeLuz VALUES
 	(default, 270, 1130, "2024-08-01", 41.20),
 	(default, 300, 1200, "2024-08-01", 44.55),
 	(default, 340, 1230, "2024-08-01", 50.30);
+    
+SELECT * FROM alertas WHERE alerta LIKE '%Baixa%';
+
+SELECT * FROM alertas WHERE alerta = "Alta Intensidade";
+
+SELECT * FROM intensidadeLuz WHERE gastosEnergia <= 40;
+
+INSERT INTO intensidadeLuz VALUES
+(default, 350, 0800, '2024-09-01', 5.25),
+(default, 420, 0900, '2024-09-02', 3.10),
+(default, 300, 1000, '2024-09-03', 0.00);
+
+SELECT * FROM intensidadeLuz 
+WHERE dia > '2024-08-29' ORDER BY intensidade DESC;
+
+ALTER TABLE intensidadeLuz
+	DROP COLUMN horarioLuz;
+    
+ALTER TABLE intensidadeLuz
+	DROP COLUMN dia;
+    
+DESC intensidadeLuz;
+
+SELECT nomeCliente, emailCliente, nomeEmpresa FROM cadastroCliente 
+	WHERE cepEmpresa LIKE '12%';
+
+SELECT nomeCliente as NOME, nomeEmpresa as EMPRESA FROM cadastroCliente;
+
+ALTER TABLE alertas
+	ADD CONSTRAINT chkintensidade CHECK (alerta IN ('Baixa intensidade', 'Alta intensidade', 'Intensidade adequada'));
+    
+INSERT INTO alertas VALUES
+(default, "2024-08-02 08:15:00", "Intensidade adequada", "A intensidade de luz está com valores adequados."),
+(default, "2024-08-03 08:45:00", "Intensidade adequada", "A intensidade de luz está com valores adequados."),
+(default, "2024-08-04 09:15:00", "Intensidade adequada", "A intensidade de luz está com valores adequados.");  
+
+ALTER TABLE alertas
+ADD COLUMN urgente CHAR(3); 
+
+ALTER TABLE alertas
+	ADD CONSTRAINT chkurgente CHECK (urgente IN ('sim', 'não'));
+
+
+SELECT * FROM intensidadeLuz 
+	WHERE idSensor > 7;
+
