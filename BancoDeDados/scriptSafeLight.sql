@@ -108,4 +108,7 @@ ALTER TABLE alertas
 
 SELECT * FROM intensidadeLuz 
 	WHERE idSensor > 7;
+    
+ALTER TABLE intensidadeLuz DROP COLUMN horarioLuz;
+ALTER TABLE intensidadeLuz MODIFY COLUMN dia datetime;
 
