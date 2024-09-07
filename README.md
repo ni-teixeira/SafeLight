@@ -2,7 +2,7 @@
 
 ## Resumo:
 
-O **Safe Light** é um sistema desenvolvido para monitorar e ajustar automaticamente a iluminação em ambientes de trabalho, visando melhorar a saúde dos funcionários, aumentar a produtividade e reduzir custos com energia.
+O **Safe Light** é um projeto feito para monitorar e ajustar automaticamente a iluminação em ambientes de trabalho, visando melhorar a saúde dos funcionários, aumentar a produtividade e reduzir custos com energia.
 
 ## O que estamos fazendo:
 
