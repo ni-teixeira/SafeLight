@@ -2,45 +2,56 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <title>Calculadora Financeira e Simulador de Lux</title>
 </head>
+<style>
+    body {
+        background-color: #FFF9E7;
+    }
+    .input-centralizado {
+        text-align: center;
+    
+    } 
+</style>
 <body>
-
-    <h1>Calculadora de Consumo de Energia</h1>
+    
+    
+    <h1 style= "color: #000000"; align="center">Calculadora de Consumo de Energia💡</h1>
     <!-- Redução Estimada: A porcentagem de redução no consumo de energia após a implementação do sistema. -->
+    <!-- align = "center" vai centralizar os textos desejado-->
+    <p align="center">Informe a quantidade de luzes por setor ou sala:</p>
+    <p align="center"><input id="iptqtd" type="number" class="input-centralizado"></p>
+<!-- class:input-centralizado, psara centralizar o texto inserido na input-->
+    <p align="center">Informe a potência W (Watts) das luzes utilizadas:</p>
+    <p align="center"><input id="iptw" type="number" class="input-centralizado"></p>
 
-    Informe a quantidade de luzes por setor ou sala:<br>
-    <input id="iptqtd" type="number"><br>
+   <p align="center">Informe o tempo de utilização das luzes (em horas diárias): </p>
+   <p align="center"><input id="ipthrs" type="number" min="0" max="24" class="input-centralizado"></p>
 
-    Informe a potência W (Watts) das luzes utilizadas:<br>
-    <input id="iptw" type="number"><br>
+    <p align="center">Informe sua região (São Paulo, Campinas e Rio de Janeiro):</p>
+    <p align="center"><input id="iptregiao" type="text" class="input-centralizado"></p>
 
-    Informe o tempo de utilização das luzes (em horas diárias):<br>
-    <input id="ipthrs" type="number" min="0" max="24"><br>
+    <p align="center"><button onclick="calcular()">Calcular</button></p>
 
-    Informe sua região (São Paulo, Campinas e Rio de Janeiro):<br> 
-    <input id="iptregiao" type="text"><br><br>
+    <center><p align="center"><div id="divmsg"></div></p></center>
+    <!-- center: centralizar a mensagem que será exibida.-->
 
-    <button onclick="calcular()">Calcular</button>
-    <br><br>
-    <div id="divmsg"></div>
-
-    <h1>Calculadora de produtividade dos funcionários:</h1>
+    <h1 style= "color: #000000"; align="center">Calculadora de produtividade dos funcionários📊</h1>
     <!-- Produtividade esperada: Por volta de 30% após a implementação do sistema.-->
 
-    Quantidade de funcionários: <br>
-    <input id="ipt_qnt_funcionario" type="number"> <br>
+    <p align="center">Quantidade de funcionários:</p> 
+    <p align="center"><input id="ipt_qnt_funcionario" type="number" class="input-centralizado"></p> 
 
-    Salário médio dos funcionários: <br>
-    <input id="ipt_salario" type="number"> <br>
+    <p align="center">Salário médio dos funcionários:</p> 
+    <p align="center"><input id="ipt_salario" type="number" class="input-centralizado"></p> 
 
-    Horas Trabalhadas por dia: <br>
-    <input id="ipt_horas_por_dia" type="number"> <br><br>
+    <p align="center">Horas Trabalhadas por dia:</p>
+    <p align="center"><input id="ipt_horas_por_dia" type="number" class="input-centralizado"></p>
 
-    <button onclick="calcularProdutividade()">Calcular</button>
-    <br><br>
-    <div id="divmsg2"></div>
+    <p align="center"> <button onclick="calcularProdutividade()">Calcular</button> </p>
+    <br>
+    <center><p align="center"><div id="divmsg2"></div></p></center>
    
 </div>
 
@@ -78,11 +89,11 @@
             var economiafinanceira = economiaesperada * preco;
 
             // Exibição dos resultados
-            divmsg.innerHTML = `O consumo total de energia em 30 dias é de ${consumokwh} kWh.<br>
-            O consumo anual é de ${consumokwhano} kWh.<br>
-            Isso representa um gasto de R$${gastototal} mensais e R$${(gastototal * 12)} anuais.<br><br>
+            divmsg.innerHTML = `O consumo total de energia em 30 dias: ${consumokwh} kWh.<br>
+            O consumo anual: ${consumokwhano} kWh.<br>
+            Isso representa um gasto de R$${gastototal} mensais e R$${(gastototal * 12)} anuais.<br>
             A economia financeira esperada com uma redução de 40% é de R$${economiafinanceira} por mês.<br>
-            A economia anual estimada é de R$${(economiafinanceira * 12)}.<br><br>
+            A economia anual estimada é de R$${(economiafinanceira * 12)}.<br>
             O impacto ambiental é de ${impacto} Kg de CO₂ por ano, e seria necessária uma área de floresta de ${areasverdes} m² para absorvê-lo.`;
         }
 
