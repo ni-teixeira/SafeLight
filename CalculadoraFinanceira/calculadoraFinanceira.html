@@ -83,8 +83,14 @@
             var gastototal = consumokwh * preco;
 
             // Impacto ambiental e economia estimada
-            var impacto = consumokwh * 85;
-            var areasverdes = impacto / 22;
+
+            // Conforme o Ministério da Ciência e Tecnologia, o fator de emissão de CO2 produzido é de 0,0817 KG/KWh
+            var impacto = consumokwh * 0.85; 
+
+            // Cálculo de área de floresta necessária com base no valor de 39 kg de CO₂ por m²
+
+            var areasverdes = impacto / 39;
+            var areasverdesano = (impacto * 12) / 39;
             var economiaesperada = consumokwh * 0.40; // Economia de 40%
             var economiafinanceira = economiaesperada * preco;
 
@@ -94,7 +100,7 @@
             Isso representa um gasto de R$${gastototal} mensais e R$${(gastototal * 12)} anuais.<br>
             A economia financeira esperada com uma redução de 40% é de R$${economiafinanceira} por mês.<br>
             A economia anual estimada é de R$${(economiafinanceira * 12)}.<br>
-            O impacto ambiental é de ${impacto} Kg de CO₂ por ano, e seria necessária uma área de floresta de ${areasverdes} m² para absorvê-lo.`;
+            O impacto ambiental é de ${impacto * 12} Kg de CO₂ por ano e seria necessária uma área florestal de ${areasverdesano} m² para absorvê-lo.`;
         }
 
         function calcularProdutividade() {
