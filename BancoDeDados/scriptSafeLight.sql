@@ -105,10 +105,5 @@ ADD COLUMN urgente CHAR(3);
 ALTER TABLE alertas
 	ADD CONSTRAINT chkurgente CHECK (urgente IN ('sim', 'não'));
 
-
 SELECT * FROM intensidadeLuz 
 	WHERE idSensor > 7;
-    
-ALTER TABLE intensidadeLuz DROP COLUMN horarioLuz;
-ALTER TABLE intensidadeLuz MODIFY COLUMN dia datetime;
-
