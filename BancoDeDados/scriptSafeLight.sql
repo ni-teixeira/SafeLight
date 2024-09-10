@@ -13,11 +13,9 @@ CREATE TABLE cadastroCliente (
 	cepEmpresa char(8)
 );
 
-CREATE TABLE intensidadeLuz(
+CREATE TABLE sensor(
 	idSensor int primary key auto_increment,
     intensidade int,
-    horarioLuz int,
-    dia date,
     gastosEnergia decimal(10,2)
 );
 
@@ -52,39 +50,31 @@ INSERT INTO alertas VALUES
 	(default, "2024-08-01 12:15:00", "Baixa Intensidade", "A intensidade de luz está abaixo do limite mínimo." ),
 	(default, "2024-08-01 12:45:00", "Alta Intensidade", "A intensidade de luz está acima do limite máximo.");
 
-INSERT INTO intensidadeLuz VALUES
-	(default, 350, 0800, "2024-08-01", 45.50),
-	(default, 280, 0830, "2024-08-01", 40.75),
-	(default, 300, 0900, "2024-08-01", 42.00),
-	(default, 330, 0930, "2024-08-01", 48.25),
-	(default, 290, 1000, "2024-08-01", 37.60),
-	(default, 310, 1030, "2024-08-01", 43.10),
-	(default, 320, 1100, "2024-08-01", 46.85),
-	(default, 270, 1130, "2024-08-01", 41.20),
-	(default, 300, 1200, "2024-08-01", 44.55),
-	(default, 340, 1230, "2024-08-01", 50.30);
-    
+INSERT INTO sensor VALUES
+	(default, 350, 45.50),
+	(default, 280, 40.75),
+	(default, 300, 42.00),
+	(default, 330, 48.25),
+	(default, 290, 37.60),
+	(default, 310, 43.10),
+	(default, 320, 46.85),
+	(default, 270, 41.20),
+	(default, 300, 44.55),
+	(default, 340, 50.30);
+
 SELECT * FROM alertas WHERE alerta LIKE '%Baixa%';
 
 SELECT * FROM alertas WHERE alerta = "Alta Intensidade";
 
-SELECT * FROM intensidadeLuz WHERE gastosEnergia <= 40;
+SELECT * FROM sensor WHERE gastosEnergia <= 40;
 
-INSERT INTO intensidadeLuz VALUES
-(default, 350, 0800, '2024-09-01', 5.25),
-(default, 420, 0900, '2024-09-02', 3.10),
-(default, 300, 1000, '2024-09-03', 0.00);
+INSERT INTO sensor VALUES
+(default, 350, 5.25),
+(default, 420, 3.10),
+(default, 300, 0.00);
 
-SELECT * FROM intensidadeLuz 
-WHERE dia > '2024-08-29' ORDER BY intensidade DESC;
-
-ALTER TABLE intensidadeLuz
-	DROP COLUMN horarioLuz;
-    
-ALTER TABLE intensidadeLuz
-	DROP COLUMN dia;
-    
-DESC intensidadeLuz;
+SELECT * FROM sensor 
+WHERE gastosEnergia > 50 ORDER BY intensidade DESC;
 
 SELECT nomeCliente, emailCliente, nomeEmpresa FROM cadastroCliente 
 	WHERE cepEmpresa LIKE '12%';
@@ -105,5 +95,5 @@ ADD COLUMN urgente CHAR(3);
 ALTER TABLE alertas
 	ADD CONSTRAINT chkurgente CHECK (urgente IN ('sim', 'não'));
 
-SELECT * FROM intensidadeLuz 
+SELECT * FROM sensor 
 	WHERE idSensor > 7;
