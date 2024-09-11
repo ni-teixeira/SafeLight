@@ -50,10 +50,10 @@
     <p align="center"><input id="ipt_horas_por_dia" type="number" class="input-centralizado"></p>
 
     <p align="center"> <button onclick="calcularProdutividade()">Calcular</button> </p>
-    <br>
+    
     <center><p align="center"><div id="divmsg2"></div></p></center>
    
-</div>
+
 
 
     <script>
@@ -117,7 +117,7 @@
             var aumentoMinimo = valorPorHora * 1.15; // Aumento de 15%
             var aumentoMaximo = valorPorHora * 1.30; // Aumento de 30%
 
-           divmsg2.innerHTML =  `Atualmente sua empresa tem a produtividade de R$${valorPorHora * qntFuncionario} por hora. Após a implementação, esperamos em média um aumento de produtividade de 15-30%, ou seja, entre R$${aumentoMinimo * qntFuncionario} até R$${aumentoMaximo * qntFuncionario} por hora.`;
+           divmsg2.innerHTML =  `Atualmente sua empresa tem a produtividade de R$${valorPorHora * qntFuncionario} por hora. <br> Após a implementação, esperamos em média um aumento de produtividade de 15-30%, ou seja, entre R$${aumentoMinimo * qntFuncionario} <br> até R$${aumentoMaximo * qntFuncionario} por hora.`;
         }
 
     </script>
